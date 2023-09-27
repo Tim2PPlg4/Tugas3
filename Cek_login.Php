@@ -3,7 +3,7 @@
 session_start();
 
 // menghubungkan php dengan koneksi database 
-include 'koneksi.php';
+include 'Koneksi.php';
 
 // menangkap data yang dikirim dari form login
 $username = $_POST['username'];
@@ -30,20 +30,20 @@ if($cek > 0){
    header("location:halaman_admin.php");
 
 // cek jika user login sebagai pegawai
-}else if($data['level']=="pegawai"){
+}else if($data['level']=="operator"){
    // buat session login dan username
    $_SESSION['username'] = $username;
-   $_SESSION['level'] = "pegawai";
+   $_SESSION['level'] = "operator";
    // alihkan ke halaman dashboard pegawai
-  header("location:halaman_pegawai.php");
+  header("location:halaman_operator.php");
 
-  // cek jika user login sebagai pengurus
-  }else if($data['level']=="pengurus"){
+  // cek jika user login sebagai siswa
+  }else if($data['level']=="siswa"){
    // buat session login dan username
    $_SESSION['username'] = $username;
-   $_SESSION['level'] = "pengurus";
-   // alihkan ke halaman dashboard pengurus
-  header("location:halaman_pengurus.php");
+   $_SESSION['level'] = "siswa";
+   // alihkan ke halaman dashboard siswa
+  header("location:halaman_siswa.php");
 
 }else{
 
